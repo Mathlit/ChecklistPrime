@@ -1,0 +1,19 @@
+{
+    "name": "Checklist Prime",
+    "short_name": "CL Prime",
+    "description": "Keeping check of your obtained Primed goodies",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "theme_color": "#272727",
+    "icons": {
+      "512": "assets/icon_512.png"
+    },
+    "app": {
+      "urls": [
+        "https://projects.mathijslitjens.nl/checklistPrime"
+      ],
+      "launch": {
+        "web_url": "https://projects.mathijslitjens.nl/checklistPrime"
+      }
+    }
+  }
