@@ -10,10 +10,10 @@
     },
     "app": {
       "urls": [
-        "https://projects.mathijslitjens.nl/checklistPrime"
+        "https://mathlit.github.io/ChecklistPrime/"
       ],
       "launch": {
-        "web_url": "https://projects.mathijslitjens.nl/checklistPrime"
+        "web_url": "https://mathlit.github.io/ChecklistPrime/"
       }
     }
   }

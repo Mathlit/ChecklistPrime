@@ -1,7 +1,7 @@
 {
     "name": "Checklist Prime",
     "short_name": "Check Prime",
-    "start_url": "https://projects.mathijslitjens.nl/checklistPrime",
+    "start_url": "https://mathlit.github.io/ChecklistPrime/",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
