@@ -1507,35 +1507,44 @@ THE SOFTWARE.
 });
 ;
 !function () {
-  var a = Handlebars.template,
-      n = Handlebars.templates = Handlebars.templates || {};n.filter = a({ 1: function (a, n, e, l, t) {
-      var i,
-          r = a.lambda,
-          s = a.escapeExpression;return '            <div class="filter itemType">\r\n                <div class="titleContainer">\r\n                    <label for="' + s(r(null != n ? n.typeId : n, n)) + '">' + (null != (i = r(null != n ? n.typeName : n, n)) ? i : "") + '</label>\r\n                </div>\r\n                <div class="checkbox">\r\n                    <input type="checkbox" ' + s(r(null != n ? n.checked : n, n)) + ' name="' + s(r(null != n ? n.typeId : n, n)) + '">\r\n                    <div class="checkboxOverlay">\r\n                        <span class="i-checkbox-unchecked"></span>\r\n                        <span class="i-checkbox-checked"></span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n';
-    }, compiler: [7, ">= 4.0.0"], main: function (a, n, e, l, t) {
-      var i,
-          r,
-          s = null != n ? n : a.nullContext || {};return '<div id="filterContainer">\r\n    <div class="typesContainer">\r\n' + (null != (i = e.each.call(s, null != n ? n.items : n, { name: "each", hash: {}, fn: a.program(1, t, 0), inverse: a.noop, data: t })) ? i : "") + '        <div class="filter">\r\n            <div class="titleContainer">\r\n                <label for="completed">Show completed items</label>\r\n            </div>\r\n            <div class="checkbox">\r\n                <input type="checkbox" ' + a.escapeExpression((r = null != (r = e.completedChecked || (null != n ? n.completedChecked : n)) ? r : e.helperMissing, "function" == typeof r ? r.call(s, { name: "completedChecked", hash: {}, data: t }) : r)) + ' name="completed">\r\n                <div class="checkboxOverlay">\r\n                    <span class="i-checkbox-unchecked"></span>\r\n                    <span class="i-checkbox-checked"></span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class="saveContainer">\r\n        <span class="save">Apply</span>\r\n    </div>\r\n</div>';
-    }, useData: !0 }), n.itemContainer = a({ compiler: [7, ">= 4.0.0"], main: function (a, n, e, l, t) {
-      var i,
-          r,
-          s = null != n ? n : a.nullContext || {},
-          c = e.helperMissing,
+  var n = Handlebars.template,
+      a = Handlebars.templates = Handlebars.templates || {};a.filter = n({ 1: function (n, a, l, e, i) {
+      var t,
+          s = n.lambda,
+          r = n.escapeExpression;return '            <div class="filter itemType">\r\n                <div class="titleContainer">\r\n                    <label for="' + r(s(null != a ? a.typeId : a, a)) + '">' + (null != (t = s(null != a ? a.typeName : a, a)) ? t : "") + '</label>\r\n                </div>\r\n                <div class="checkbox">\r\n                    <input type="checkbox" ' + r(s(null != a ? a.checked : a, a)) + ' name="' + r(s(null != a ? a.typeId : a, a)) + '">\r\n                    <div class="checkboxOverlay">\r\n                        <span class="i-checkbox-unchecked"></span>\r\n                        <span class="i-checkbox-checked"></span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n';
+    }, compiler: [7, ">= 4.0.0"], main: function (n, a, l, e, i) {
+      var t,
+          s,
+          r = null != a ? a : n.nullContext || {};return '<div id="filterContainer">\r\n    <div class="typesContainer">\r\n' + (null != (t = l.each.call(r, null != a ? a.items : a, { name: "each", hash: {}, fn: n.program(1, i, 0), inverse: n.noop, data: i })) ? t : "") + '        <div class="filter">\r\n            <div class="titleContainer">\r\n                <label for="completed">Show completed items</label>\r\n            </div>\r\n            <div class="checkbox">\r\n                <input type="checkbox" ' + n.escapeExpression((s = null != (s = l.completedChecked || (null != a ? a.completedChecked : a)) ? s : l.helperMissing, "function" == typeof s ? s.call(r, { name: "completedChecked", hash: {}, data: i }) : s)) + ' name="completed">\r\n                <div class="checkboxOverlay">\r\n                    <span class="i-checkbox-unchecked"></span>\r\n                    <span class="i-checkbox-checked"></span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class="saveContainer">\r\n        <span class="save">Apply</span>\r\n    </div>\r\n</div>';
+    }, useData: !0 }), a.itemContainer = n({ compiler: [7, ">= 4.0.0"], main: function (n, a, l, e, i) {
+      var t,
+          s,
+          r = null != a ? a : n.nullContext || {},
+          c = l.helperMissing,
           d = "function",
-          o = a.escapeExpression;return '<div class="itemContainer" data-itemid="' + o((r = null != (r = e.itemId || (null != n ? n.itemId : n)) ? r : c, typeof r === d ? r.call(s, { name: "itemId", hash: {}, data: t }) : r)) + '" data-typeid="' + o((r = null != (r = e.typeId || (null != n ? n.typeId : n)) ? r : c, typeof r === d ? r.call(s, { name: "typeId", hash: {}, data: t }) : r)) + '">\r\n    <div class="infoContainer">\r\n        <div class="titleContainer">\r\n            <span>' + (null != (r = null != (r = e.itemName || (null != n ? n.itemName : n)) ? r : c, i = typeof r === d ? r.call(s, { name: "itemName", hash: {}, data: t }) : r) ? i : "") + '</span>\r\n        </div>\r\n        <div class="countContainer">\r\n            <span class="itemCountObtained">' + o((r = null != (r = e.obtainedParts || (null != n ? n.obtainedParts : n)) ? r : c, typeof r === d ? r.call(s, { name: "obtainedParts", hash: {}, data: t }) : r)) + '</span> / <span class="itemCountTotal">' + o((r = null != (r = e.totalParts || (null != n ? n.totalParts : n)) ? r : c, typeof r === d ? r.call(s, { name: "totalParts", hash: {}, data: t }) : r)) + '</span>\r\n        </div>\r\n    </div>\r\n    <div class="imageContainer">\r\n        <div class="image ' + o((r = null != (r = e.typeName || (null != n ? n.typeName : n)) ? r : c, typeof r === d ? r.call(s, { name: "typeName", hash: {}, data: t }) : r)) + '"></div>\r\n    </div>\r\n    <div class="loader">\r\n        \r\n    </div>\r\n</div>';
-    }, useData: !0 }), n.partContainer = a({ compiler: [7, ">= 4.0.0"], main: function (a, n, e, l, t) {
-      var i,
-          r,
-          s = null != n ? n : a.nullContext || {},
-          c = e.helperMissing,
+          o = n.escapeExpression;return '<div class="itemContainer" data-itemid="' + o((s = null != (s = l.itemId || (null != a ? a.itemId : a)) ? s : c, typeof s === d ? s.call(r, { name: "itemId", hash: {}, data: i }) : s)) + '" data-typeid="' + o((s = null != (s = l.typeId || (null != a ? a.typeId : a)) ? s : c, typeof s === d ? s.call(r, { name: "typeId", hash: {}, data: i }) : s)) + '">\r\n    <div class="infoContainer">\r\n        <div class="titleContainer">\r\n            <span>' + (null != (s = null != (s = l.itemName || (null != a ? a.itemName : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "itemName", hash: {}, data: i }) : s) ? t : "") + '</span>\r\n        </div>\r\n        <div class="countContainer">\r\n            <span class="itemCountObtained">' + o((s = null != (s = l.obtainedParts || (null != a ? a.obtainedParts : a)) ? s : c, typeof s === d ? s.call(r, { name: "obtainedParts", hash: {}, data: i }) : s)) + '</span> / <span class="itemCountTotal">' + o((s = null != (s = l.totalParts || (null != a ? a.totalParts : a)) ? s : c, typeof s === d ? s.call(r, { name: "totalParts", hash: {}, data: i }) : s)) + '</span>\r\n        </div>\r\n    </div>\r\n    <div class="imageContainer">\r\n        <div class="image ' + o((s = null != (s = l.typeName || (null != a ? a.typeName : a)) ? s : c, typeof s === d ? s.call(r, { name: "typeName", hash: {}, data: i }) : s)) + '"></div>\r\n    </div>\r\n    <div class="loader">\r\n        \r\n    </div>\r\n</div>';
+    }, useData: !0 }), a.missionContainer = n({ compiler: [7, ">= 4.0.0"], main: function (n, a, l, e, i) {
+      var t,
+          s,
+          r = null != a ? a : n.nullContext || {},
+          c = l.helperMissing,
           d = "function",
-          o = a.escapeExpression;return '<div class="partContainer active" data-partid="' + o((r = null != (r = e.partId || (null != n ? n.partId : n)) ? r : c, typeof r === d ? r.call(s, { name: "partId", hash: {}, data: t }) : r)) + '" data-itemid="' + o((r = null != (r = e.itemId || (null != n ? n.itemId : n)) ? r : c, typeof r === d ? r.call(s, { name: "itemId", hash: {}, data: t }) : r)) + '">\r\n    <div class="infoContainer">\r\n        <div class="titleContainer">\r\n            <span>' + (null != (r = null != (r = e.partName || (null != n ? n.partName : n)) ? r : c, i = typeof r === d ? r.call(s, { name: "partName", hash: {}, data: t }) : r) ? i : "") + '</span>\r\n        </div>\r\n    </div>\r\n    <div class="imageContainer">\r\n        <div class="image ' + o((r = null != (r = e.typeName || (null != n ? n.typeName : n)) ? r : c, typeof r === d ? r.call(s, { name: "typeName", hash: {}, data: t }) : r)) + '"></div>\r\n    </div>\r\n    <div class="obtainedContainer">\r\n        <div class="checkbox">\r\n            <input type="checkbox" ' + o((r = null != (r = e.checked || (null != n ? n.checked : n)) ? r : c, typeof r === d ? r.call(s, { name: "checked", hash: {}, data: t }) : r)) + '>\r\n            <div class="checkboxOverlay">\r\n                <span class="i-checkbox-unchecked"></span>\r\n                <span class="i-checkbox-checked"></span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class="loader">\r\n\r\n    </div>\r\n</div>';
-    }, useData: !0 }), n.relicContainer = a({ compiler: [7, ">= 4.0.0"], main: function (a, n, e, l, t) {
-      var i,
-          r,
-          s = null != n ? n : a.nullContext || {},
-          c = e.helperMissing,
-          d = a.escapeExpression;return '<div class="relicContainer active" data-relicid="' + d((r = null != (r = e.relicId || (null != n ? n.relicId : n)) ? r : c, "function" == typeof r ? r.call(s, { name: "relicId", hash: {}, data: t }) : r)) + '" data-partid="' + d((r = null != (r = e.partId || (null != n ? n.partId : n)) ? r : c, "function" == typeof r ? r.call(s, { name: "partId", hash: {}, data: t }) : r)) + '">\r\n    <div class="infoContainer">\r\n        <div class="titleContainer">\r\n            <span>' + (null != (r = null != (r = e.relicName || (null != n ? n.relicName : n)) ? r : c, i = "function" == typeof r ? r.call(s, { name: "relicName", hash: {}, data: t }) : r) ? i : "") + "</span>\r\n        </div>\r\n    </div>\r\n</div>";
+          o = n.escapeExpression;return '<div class="missionContainer active" data-missionid="' + o((s = null != (s = l.missionId || (null != a ? a.missionId : a)) ? s : c, typeof s === d ? s.call(r, { name: "missionId", hash: {}, data: i }) : s)) + '" data-relicid="' + o((s = null != (s = l.relicId || (null != a ? a.relicId : a)) ? s : c, typeof s === d ? s.call(r, { name: "relicId", hash: {}, data: i }) : s)) + '">\r\n    <div class="infoContainer">\r\n        <div class="missionInfoContainer">\r\n            <span>' + (null != (s = null != (s = l.missionLocation || (null != a ? a.missionLocation : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "missionLocation", hash: {}, data: i }) : s) ? t : "") + " - " + (null != (s = null != (s = l.missionName || (null != a ? a.missionName : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "missionName", hash: {}, data: i }) : s) ? t : "") + '</span>\r\n            <span class="type">' + (null != (s = null != (s = l.missionType || (null != a ? a.missionType : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "missionType", hash: {}, data: i }) : s) ? t : "") + '</span>\r\n        </div>\r\n        <div class="relicInfoContainer">\r\n            <span class="rotation">Rotation ' + (null != (s = null != (s = l.missionRotation || (null != a ? a.missionRotation : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "missionRotation", hash: {}, data: i }) : s) ? t : "") + '</span>\r\n            <span class="chance">' + (null != (s = null != (s = l.relicChance || (null != a ? a.relicChance : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "relicChance", hash: {}, data: i }) : s) ? t : "") + "%</span>\r\n        </div>\r\n    </div>\r\n</div>";
+    }, useData: !0 }), a.partContainer = n({ compiler: [7, ">= 4.0.0"], main: function (n, a, l, e, i) {
+      var t,
+          s,
+          r = null != a ? a : n.nullContext || {},
+          c = l.helperMissing,
+          d = "function",
+          o = n.escapeExpression;return '<div class="partContainer active" data-partid="' + o((s = null != (s = l.partId || (null != a ? a.partId : a)) ? s : c, typeof s === d ? s.call(r, { name: "partId", hash: {}, data: i }) : s)) + '" data-itemid="' + o((s = null != (s = l.itemId || (null != a ? a.itemId : a)) ? s : c, typeof s === d ? s.call(r, { name: "itemId", hash: {}, data: i }) : s)) + '">\r\n    <div class="infoContainer">\r\n        <div class="titleContainer">\r\n            <span>' + (null != (s = null != (s = l.partName || (null != a ? a.partName : a)) ? s : c, t = typeof s === d ? s.call(r, { name: "partName", hash: {}, data: i }) : s) ? t : "") + '</span>\r\n        </div>\r\n    </div>\r\n    <div class="imageContainer">\r\n        <div class="image ' + o((s = null != (s = l.typeName || (null != a ? a.typeName : a)) ? s : c, typeof s === d ? s.call(r, { name: "typeName", hash: {}, data: i }) : s)) + '"></div>\r\n    </div>\r\n    <div class="obtainedContainer">\r\n        <div class="checkbox">\r\n            <input type="checkbox" ' + o((s = null != (s = l.checked || (null != a ? a.checked : a)) ? s : c, typeof s === d ? s.call(r, { name: "checked", hash: {}, data: i }) : s)) + '>\r\n            <div class="checkboxOverlay">\r\n                <span class="i-checkbox-unchecked"></span>\r\n                <span class="i-checkbox-checked"></span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class="loader">\r\n\r\n    </div>\r\n</div>';
+    }, useData: !0 }), a.relicContainer = n({ 1: function (n, a, l, e, i) {
+      return " - Vaulted";
+    }, compiler: [7, ">= 4.0.0"], main: function (n, a, l, e, i) {
+      var t,
+          s,
+          r = null != a ? a : n.nullContext || {},
+          c = l.helperMissing,
+          d = n.escapeExpression;return '<div class="relicContainer active" data-relicid="' + d((s = null != (s = l.relicId || (null != a ? a.relicId : a)) ? s : c, "function" == typeof s ? s.call(r, { name: "relicId", hash: {}, data: i }) : s)) + '" data-partid="' + d((s = null != (s = l.partId || (null != a ? a.partId : a)) ? s : c, "function" == typeof s ? s.call(r, { name: "partId", hash: {}, data: i }) : s)) + '">\r\n    <div class="infoContainer">\r\n        <div class="titleContainer">\r\n            <span>' + (null != (s = null != (s = l.relicName || (null != a ? a.relicName : a)) ? s : c, t = "function" == typeof s ? s.call(r, { name: "relicName", hash: {}, data: i }) : s) ? t : "") + " (" + (null != (s = null != (s = l.partChance || (null != a ? a.partChance : a)) ? s : c, t = "function" == typeof s ? s.call(r, { name: "partChance", hash: {}, data: i }) : s) ? t : "") + "%)" + (null != (t = l.if.call(r, null != a ? a.vaulted : a, { name: "if", hash: {}, fn: n.program(1, i, 0), inverse: n.noop, data: i })) ? t : "") + '</span>\r\n        </div>\r\n    </div>\r\n    <div class="loader">\r\n\r\n    </div>\r\n</div>';
     }, useData: !0 });
 }();
 /*!
@@ -2282,20 +2291,88 @@ class App {
         this.api = 'https://projects.mathijslitjens.nl/checklistPrime/api/?action=';
         this.mainContainer = document.querySelector('#mainContainer');
         this.obtainedParts = {};
-        this.itemTypes = {};
-        this.partTypes = {};
         this.showCompleted = true;
         this.typeFilter = {};
+
+        this.itemTypes = {};
+        this.partTypes = {};
+        this.missionTypes = {};
+        this.missionLocations = {};
+
+        this.dbVersion = 0;
+        this.updateNeeded = false;
+
+        let headers = new Headers();
+        headers.append('auth-key', 'd61946496397670b83cbdbe788c8545f');
+
+        this.fetchOptions = {
+            headers: headers
+        };
     }
 
     init() {
-        this.fetchTypes().then(() => {
+        this.updateDB().then(() => {
             this.setTypeFilter().then(() => {
                 this.setShowCompleted().then(() => {
                     this.getObtainedParts().then(() => {
                         this.insertItems();
                         this.initFilterWindow();
                     });
+                });
+            });
+        });
+    }
+
+    clearDB() {
+        return localforage.clear();
+    }
+
+    updateDB() {
+        return new Promise((resolve, reject) => {
+            fetch(this.api + 'lastUpdate', this.fetchOptions).then(response => {
+                return response.json();
+            }).then(json => {
+                localforage.getItem('dbVersion').then(dbVersion => {
+                    if (dbVersion === null) {
+                        this.updateNeeded = true;
+                    } else if (parseInt(json.update_id) > dbVersion) {
+                        this.updateNeeded = true;
+                    }
+
+                    if (this.updateNeeded) {
+                        Promise.all([this.fetchTypes(), this.fetchMissionInfo()]).then(() => {
+                            this.dbVersion = parseInt(json.update_id);
+                            localforage.setItem('dbVersion', this.dbVersion).then(() => {
+                                resolve();
+                            });
+                        });
+                    } else {
+
+                        Promise.all([new Promise(resolve => {
+                            localforage.getItem('itemTypes').then(itemTypes => {
+                                this.itemTypes = itemTypes;
+                                resolve();
+                            });
+                        }), new Promise(resolve => {
+                            localforage.getItem('partTypes').then(partTypes => {
+                                this.partTypes = partTypes;
+                                resolve();
+                            });
+                        }), new Promise(resolve => {
+                            localforage.getItem('missionTypes').then(missionTypes => {
+                                this.missionTypes = missionTypes;
+                                resolve();
+                            });
+                        }), new Promise(resolve => {
+                            localforage.getItem('missionLocations').then(missionLocations => {
+                                this.missionLocations = missionLocations;
+                                resolve();
+                            });
+                        })]).then(() => {
+                            this.dbVersion = dbVersion;
+                            resolve();
+                        });
+                    }
                 });
             });
         });
@@ -2448,24 +2525,60 @@ class App {
 
     fetchTypes() {
         return Promise.all([new Promise(resolve => {
-            fetch(this.api + 'itemTypes').then(response => {
+            fetch(this.api + 'itemTypes', this.fetchOptions).then(response => {
                 return response.json();
             }).then(json => {
                 json.forEach(type => {
                     let id = parseInt(type.id);
                     this.itemTypes[id] = type.name;
                 });
-                resolve();
+
+                localforage.setItem('itemTypes', this.itemTypes).then(() => {
+                    resolve();
+                });
             });
         })], [new Promise(resolve => {
-            fetch(this.api + 'partTypes').then(response => {
+            fetch(this.api + 'partTypes', this.fetchOptions).then(response => {
                 return response.json();
             }).then(json => {
                 json.forEach(type => {
                     let id = parseInt(type.id);
                     this.partTypes[id] = type.name;
                 });
-                resolve();
+
+                localforage.setItem('partTypes', this.partTypes).then(() => {
+                    resolve();
+                });
+            });
+        })]);
+    }
+
+    fetchMissionInfo() {
+        return Promise.all([new Promise(resolve => {
+            fetch(this.api + 'missionTypes', this.fetchOptions).then(response => {
+                return response.json();
+            }).then(json => {
+                json.forEach(type => {
+                    let id = parseInt(type.id);
+                    this.missionTypes[id] = type.name;
+                });
+
+                localforage.setItem('missionTypes', this.missionTypes).then(() => {
+                    resolve();
+                });
+            });
+        })], [new Promise(resolve => {
+            fetch(this.api + 'missionLocations', this.fetchOptions).then(response => {
+                return response.json();
+            }).then(json => {
+                json.forEach(location => {
+                    let id = parseInt(location.id);
+                    this.missionLocations[id] = location.name;
+                });
+
+                localforage.setItem('missionLocations', this.missionLocations).then(() => {
+                    resolve();
+                });
             });
         })]);
     }
@@ -2496,7 +2609,7 @@ class App {
     }
 
     insertItems() {
-        fetch(this.api + 'items').then(response => {
+        fetch(this.api + 'items', this.fetchOptions).then(response => {
             return response.json();
         }).then(json => {
             json.forEach(item => {
@@ -2554,12 +2667,16 @@ class App {
                 if (!partContainer.classList.contains('active')) {
                     document.querySelectorAll('.relicContainer[data-partid="' + partContainer.getAttribute('data-partid') + '"]').forEach(relicContainer => {
                         relicContainer.classList.remove('active');
+
+                        document.querySelectorAll('.missionContainer[data-relicid="' + relicContainer.getAttribute('data-relicid') + '"]').forEach(missionContainer => {
+                            missionContainer.classList.remove('active');
+                        });
                     });
                 }
             });
         } else {
             itemContainer.classList.add('loading');
-            fetch(this.api + 'parts&item=' + itemId).then(response => {
+            fetch(this.api + 'parts&item=' + itemId, this.fetchOptions).then(response => {
                 return response.json();
             }).then(json => {
                 json.reverse();
@@ -2668,14 +2785,23 @@ class App {
         if (document.querySelectorAll('.relicContainer[data-partid="' + partId + '"]').length > 0) {
             document.querySelectorAll('.relicContainer[data-partid="' + partId + '"]').forEach(relicContainer => {
                 relicContainer.classList.toggle('active');
+
+                document.querySelectorAll('.missionContainer[data-relicid="' + relicContainer.getAttribute('data-relicid') + '"]').forEach(missionContainer => {
+                    missionContainer.classList.remove('active');
+                });
             });
         } else {
             partContainer.classList.add('loading');
-            fetch(this.api + 'relicsForPart&part=' + partId).then(response => {
+            fetch(this.api + 'relicsForPart&part=' + partId, this.fetchOptions).then(response => {
                 return response.json();
             }).then(json => {
                 json.reverse();
                 json.forEach(relic => {
+                    if (relic.inMissions == 0) {
+                        relic.vaulted = true;
+                    } else {
+                        relic.vaulted = false;
+                    }
                     let relicContainer = this.createRelicContainer(relic);
 
                     partContainer.parentNode.insertBefore(relicContainer, partContainer.nextSibling);
@@ -2690,19 +2816,89 @@ class App {
         let html = Handlebars.templates.relicContainer({
             relicId: relic.relicId,
             relicName: relic.relicName,
-            partId: relic.partId
+            partChance: relic.partChance,
+            partId: relic.partId,
+            vaulted: relic.vaulted
         });
 
         let tempEl = document.createElement('div');
         tempEl.innerHTML = html;
 
-        let partContainer = tempEl.firstChild;
+        let relicContainer = tempEl.firstChild;
 
-        return partContainer;
+        if (!relic.vaulted) {
+            relicContainer.addEventListener('click', e => {
+                if (!e.target.classList.contains('loader')) {
+                    this.toggleMissionsFromRelic(relic.relicId, relicContainer);
+                }
+            });
+        }
+
+        return relicContainer;
+    }
+
+    toggleMissionsFromRelic(relicId, element) {
+        let relicContainer = element;
+
+        if (document.querySelectorAll('.missionContainer[data-relicid="' + relicId + '"]').length > 0) {
+            document.querySelectorAll('.missionContainer[data-relicid="' + relicId + '"]').forEach(missionContainer => {
+                missionContainer.classList.toggle('active');
+            });
+        } else {
+            relicContainer.classList.add('loading');
+            fetch(this.api + 'missionsForRelic&relic=' + relicId, this.fetchOptions).then(response => {
+                return response.json();
+            }).then(json => {
+                json.reverse();
+                json.forEach(mission => {
+                    mission.relicId = relicId;
+                    let missionContainer = this.createMissionContainer(mission);
+
+                    relicContainer.parentNode.insertBefore(missionContainer, relicContainer.nextSibling);
+                });
+
+                relicContainer.classList.remove('loading');
+            });
+        }
+    }
+
+    createMissionContainer(mission) {
+        let missionLocation = this.missionLocations[mission.missionLocation];
+        missionLocation = missionLocation.charAt(0).toUpperCase() + missionLocation.slice(1);
+        let missionType = this.missionTypes[mission.missionType];
+        missionType = missionType.charAt(0).toUpperCase() + missionType.slice(1);
+
+        let html = Handlebars.templates.missionContainer({
+            missionId: mission.missionId,
+            relicId: mission.relicId,
+            missionLocation: missionLocation,
+            missionName: mission.missionName,
+            missionType: missionType,
+            missionRotation: mission.missionRotation.toUpperCase(),
+            relicChance: mission.relicChance
+        });
+
+        let tempEl = document.createElement('div');
+        tempEl.innerHTML = html;
+
+        let missionContainer = tempEl.firstChild;
+
+        return missionContainer;
     }
 }
-window.addEventListener('load', function () {
-    let app = new App();
+var app;
 
+window.addEventListener('load', function () {
+    app = new App();
     app.init();
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').then(function (registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    }
 });

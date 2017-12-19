@@ -3,8 +3,6 @@ define('CONTINUE', true);
 
 require_once('settings.php');
 
-header('Content-Type: application/json');
-
 $action = $_GET["action"];
 
 function getId() {
@@ -25,6 +23,15 @@ function getPart() {
 	return $id;
 }
 
+function getRelic() {
+	$id = false;
+	if (isset($_GET["relic"]) && intval($_GET["relic"]) !== 0) {
+		$id = intval($_GET["relic"]);
+	}
+
+	return $id;
+}
+
 function getItem() {
 	$id = false;
 	if (isset($_GET["item"]) && intval($_GET["item"]) !== 0) {
@@ -35,6 +42,21 @@ function getItem() {
 }
 
 switch ($action) {
+    case "lastUpdate":
+        $sql = "
+            SELECT 
+                update_id,
+                updated
+            FROM updates
+            ORDER BY
+                update_id DESC
+            LIMIT 1";
+
+        $result = $conn->query($sql);
+
+        echo json_encode($result->fetch_assoc());
+    break;
+
     case "items": 
         $id = getId();
         $sql = "
@@ -154,7 +176,7 @@ switch ($action) {
 
     case "relicEras":
         $id = getId();
-        $sql = "SELECT relic_era_id, name FROM relic_eras " . ($id ? "WHERE relic_era_id = " . $id : "");
+        $sql = "SELECT relic_era_id AS id, name AS name FROM relic_eras " . ($id ? "WHERE relic_era_id = " . $id : "");
         $result = $conn->query($sql);
 
         $data = [];
@@ -181,8 +203,8 @@ switch ($action) {
             INNER JOIN part_in_relic pir
                 ON r.relic_id = pir.relic
             WHERE 1
-            ".($id ? "AND r.relic_id = " . $id . " ": "")."
-            ".($item ? "AND pir.part = " . $item . " ": "")."
+            ".($id ? "AND r.relic_id = " . $id . " " : "")."
+            ".($item ? "AND pir.part = " . $item . " " : "")."
             ORDER BY 
                 re.order, 
                 r.name";
@@ -203,14 +225,20 @@ switch ($action) {
             SELECT 
                 pir.relic AS relicId, 
                 CONCAT_WS(' ', re.name, r.name) AS relicName, 
-                pir.part AS partId
+                pir.part AS partId,
+                pir.chance AS partChance,
+                IF(COUNT(rim.relic) > 0, 1, 0) AS inMissions
             FROM part_in_relic pir
             INNER JOIN relics r
                 ON pir.relic = r.relic_id
             INNER JOIN relic_eras re
                 ON r.era = re.relic_era_id
+            LEFT JOIN relic_in_mission rim
+                ON r.relic_id = rim.relic
             WHERE 1
-            ".($part ? "AND pir.part = " . $part . " ": "")."
+            ".($part ? "AND pir.part = " . $part . " " : "")."
+            GROUP BY 
+                CONCAT_WS('-', r.relic_id, pir.part)
             ORDER BY 
                 re.order,
                 r.name";
@@ -223,18 +251,97 @@ switch ($action) {
 		}
 
 		echo json_encode($data);
-		break;
-
-    case "":
-
     break;
 
-    case "henk":
-        header("location: https://www.youtube.com/watch?v=w0HNZL9mmOo");
+    case "missionTypes":
+        $sql = "
+            SELECT
+                mission_type_id AS id,
+                name AS name
+            FROM mission_types";
+        $result = $conn->query($sql);
+
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
+    break;
+
+    case "missionLocations":
+        $sql = "
+            SELECT
+                mission_location_id AS id,
+                name AS name
+            FROM mission_locations";
+        $result = $conn->query($sql);
+
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
+    break;
+
+    case "missions":
+        $id = getId();
+        $sql = "
+            SELECT
+                mission_id, 
+                name, 
+                location, 
+                type
+            FROM missions
+            WHERE 1
+            ".($id ? "AND mission_id = " . $id . " " : "")."
+            ";
+        $result = $conn->query($sql);
+        
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
+    break;
+
+    case "missionsForRelic":
+        $relic = getRelic();
+        $sql = "
+            SELECT
+                m.mission_id AS missionId,
+                m.name AS missionName,
+                m.type AS missionType,
+                m.location AS missionLocation,
+                rim.rotation AS missionRotation, 
+                rim.chance AS relicChance
+            FROM relic_in_mission rim
+            INNER JOIN missions m
+                ON rim.mission = m.mission_id
+            ".($relic ? "WHERE rim.relic = " . $relic . " " : "")."
+            ORDER BY 
+                rim.chance DESC,
+                rim.rotation";
+
+        $result = $conn->query($sql);
+        
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
+        break;
     break;
     
     default:
-    die("Not a valid action");
+    die("{\"error\":\"Not a valid action\"}");
     break;
 }
 
